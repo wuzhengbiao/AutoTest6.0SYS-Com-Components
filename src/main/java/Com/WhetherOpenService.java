@@ -16,15 +16,15 @@ public class WhetherOpenService {
         String PidValue="";
         String RealPid="";//获取正确pid值
         String Port="";//端口号
-        String time="";
+        //String time="";
         String MacacainformationPort= "";//根据macaca服务的pid获取端口信息
         DosCommand servercheck = new DosCommand();
         CurrentTime=ModifyWindowsTime.GetCurrentSystemTime();
         try {
             List<String> MacacaServer = servercheck.RunDosCommand("tasklist|find /i \"node.exe\"");//查找macaca服务
             if (MacacaServer.size() == 0) {
-               // serverStart.RunServerBat("CallMacacaServer");
-                ModifyWindowsTime.SetSystemTime("05:59:50");
+                //serverStart.RunServerBat("CallMacacaServer");
+                ModifyWindowsTime.SetSystemTime("04:59:50");
             }
             for (int i = 0; i <= SeverTime; i++) {
                 List<String> ServerResult = servercheck.RunDosCommand("tasklist|find /i \"node.exe\"");//查找macaca服务
@@ -59,7 +59,7 @@ public class WhetherOpenService {
                                             Port=StringValuePort[PortResultNumber].replace("[::]:","");
                                             System.out.println("Find port:"+Port);
                                             System.out.println("Finding Service Time spend :"+i+" seconds");
-                                            ModifyWindowsTime.SetSystemTime(time);//改回原时间
+                                            ModifyWindowsTime.SetSystemTime(ModifyWindowsTime.ReturnCurrentSystemTime(i*2));;//改回原时间
                                             return 1;
                                         }
                                     }
@@ -69,7 +69,7 @@ public class WhetherOpenService {
                         }
                     }
                 }
-                Thread.sleep(1000);
+               // Thread.sleep(1000);
                 continue;
             }
 
