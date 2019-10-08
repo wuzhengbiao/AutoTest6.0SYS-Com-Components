@@ -9,6 +9,10 @@ import static Com.FileDelete.delFolder;
 
 public class TesttStart {
     @Test
+    /***
+     * @wuzhengbiao
+     */
+
     public void Start()throws Exception{
         List<String> List_delete_files= new ArrayList<String>();
         List<String> List_need_delete_files= new ArrayList<String>();
